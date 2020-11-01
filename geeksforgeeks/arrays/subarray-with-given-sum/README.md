@@ -28,4 +28,4 @@ Testcase1: sum of elements from 2nd position to 4th position is 12
 Testcase2: sum of elements from 1st position to 5th position is 15  
 
 ## Original link
-https://practice.geeksforgeeks.org/problems/subarray-with-given-sum
+https://practice.geeksforgeeks.org/problems/subarray-with-given-sum/0

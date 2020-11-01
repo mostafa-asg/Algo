@@ -19,3 +19,6 @@ pqr.mno
 ## Output:
 much.very.program.this.like.i  
 mno.pqr
+
+## Original link
+https://practice.geeksforgeeks.org/problems/reverse-words-in-a-given-string/0
