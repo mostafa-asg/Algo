@@ -8,33 +8,31 @@ class Node:
         self.left = None
 '''
 
-# use global variable
-last_seen_value = None
+# This solution is like solution 1 but doesn't use global variable
 
 # return True if the given tree is a BST, else return False
-def isBST(node):
-    global last_seen_value
+def isBST(node):    
     last_seen_value = None
-    return isbst(node)
 
-def isbst(node):
-    global last_seen_value
-    if node != None:
-        bst = isbst(node.left)
-        if bst == False:
-            return False
+    def _isbst(node):
+        nonlocal last_seen_value
+        if node != None:
+            bst = _isbst(node.left)
+            if bst == False:
+                return False
 
-        if last_seen_value == None:
-            last_seen_value = node.data        
-        elif node.data <= last_seen_value:
-            return False
+            if last_seen_value == None:
+                last_seen_value = node.data        
+            elif node.data <= last_seen_value:
+                return False
+            else:
+                last_seen_value = node.data
+
+            return _isbst(node.right)
         else:
-            last_seen_value = node.data
-
-        return isbst(node.right)
-    else:
-        return True
-
+            return True
+    
+    return _isbst(node)
 
 #{ 
 #  Driver Code Starts
