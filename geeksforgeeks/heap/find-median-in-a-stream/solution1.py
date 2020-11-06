@@ -6,15 +6,12 @@ def balanceHeaps():
     Balance the two heaps size , such that difference is not more than one.
     '''    
     if len(min_heap) > len(max_heap) + 1:
-        x = min_heap.pop(0)
-        max_heap.append(x)
-        heapq.heapify(min_heap)
+        x = heapq.heappop(min_heap)
+        max_heap.append(x)        
         heapq._heapify_max(max_heap)
     elif len(max_heap) > len(min_heap) + 1:
-        x = max_heap.pop(0)
-        min_heap.append(x)
-        heapq.heapify(min_heap)
-        heapq._heapify_max(max_heap)
+        x = heapq._heappop_max(max_heap)
+        heapq.heappush(min_heap, x)                
     
 def getMedian():
     '''
@@ -35,13 +32,12 @@ def insertHeaps(x):
     use heapify modules , already imported by driver code
     :param x: value to be inserted
     :return: None
-    '''
-    if len(min_heap) == 0 or x > min_heap[0]:
-        min_heap.append(x)
-        heapq.heapify(min_heap)
-    else:
+    '''    
+    if len(max_heap) == 0 or x < max_heap[0]:
         max_heap.append(x)
         heapq._heapify_max(max_heap)
+    else:
+        heapq.heappush(min_heap, x)
 
 
 #{ 
