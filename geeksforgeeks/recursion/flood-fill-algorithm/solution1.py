@@ -17,8 +17,10 @@ def main():
 
 
 def print_matrix(matrix):
+    result = []
     for row in range(len(matrix)):
-        print(" ".join(map(str, matrix[row])))
+        result.append(" ".join(map(str, matrix[row])))
+    print(" ".join(result))
 
 
 def start_fill(matrix, x, y, k):
@@ -26,6 +28,8 @@ def start_fill(matrix, x, y, k):
     fill(matrix, x, y, k, old_color)
 
 def fill(matrix, x, y, k, old_color):
+    if x < 0 or y < 0:
+        return
     try:        
         if matrix[x][y] == old_color:
             matrix[x][y] = k
