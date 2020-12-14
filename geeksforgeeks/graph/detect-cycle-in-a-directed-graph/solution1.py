@@ -12,21 +12,24 @@ class CycleDetector():
 
     def __init__(self, graph: dict):
         self.graph = graph
+        self.seen = set()
 
     def isCyclic(self):
         vertices = set(graph.keys())
 
         for vertex in vertices:
-            seen_vertices = []
-            
-            result = self._expand(vertex, seen_vertices)
-            if result == True:
-                return True
+            if not vertex in self.seen:
+                seen_vertices = []
+                
+                result = self._expand(vertex, seen_vertices)
+                if result == True:
+                    return True
 
         return False
 
     def _expand(self, vertex, seen_vertices):
         seen_vertices.append(vertex)
+        self.seen.add(vertex)
 
         for v in self.graph[vertex]:
             if v in seen_vertices:
